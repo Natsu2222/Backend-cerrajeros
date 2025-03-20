@@ -1,0 +1,17 @@
+{
+  "kind": "collectionType",
+  "collectionName": "legits",
+  "info": {
+    "singularName": "legit",
+    "pluralName": "legits",
+    "displayName": "legit"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string"
+    }
+  }
+}

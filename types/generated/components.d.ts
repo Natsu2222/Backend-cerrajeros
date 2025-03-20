@@ -14,10 +14,25 @@ export interface ComponentesPaginaPagBulletPoints
   };
 }
 
+export interface InformativoComponenteInformativo
+  extends Struct.ComponentSchema {
+  collectionName: 'components_informativo_componente_informativos';
+  info: {
+    displayName: 'componente informativo';
+    icon: 'check';
+  };
+  attributes: {
+    number: Schema.Attribute.Integer;
+    texto: Schema.Attribute.String;
+    texto2: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'componentes-pagina.pag-bullet-points': ComponentesPaginaPagBulletPoints;
+      'informativo.componente-informativo': InformativoComponenteInformativo;
     }
   }
 }

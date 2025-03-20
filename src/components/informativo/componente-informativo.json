@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_informativo_componente_informativos",
+  "info": {
+    "displayName": "componente informativo",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "integer"
+    },
+    "texto": {
+      "type": "string"
+    },
+    "texto2": {
+      "type": "string"
+    }
+  }
+}
