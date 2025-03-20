@@ -1,0 +1,26 @@
+{
+  "kind": "singleType",
+  "collectionName": "imagen_logos",
+  "info": {
+    "singularName": "imagen-logo",
+    "pluralName": "imagen-logos",
+    "displayName": "Imagen-logo"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Logo": {
+      "type": "string",
+      "default": "Logo de la empresa"
+    },
+    "logoImagen": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

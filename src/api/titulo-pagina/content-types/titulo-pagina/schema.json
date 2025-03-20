@@ -1,0 +1,18 @@
+{
+  "kind": "singleType",
+  "collectionName": "titulo_paginas",
+  "info": {
+    "singularName": "titulo-pagina",
+    "pluralName": "titulo-paginas",
+    "displayName": "titulo-pagina"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "tituloPagina": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
