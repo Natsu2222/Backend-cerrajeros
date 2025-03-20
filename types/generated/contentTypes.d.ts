@@ -399,6 +399,43 @@ export interface ApiImagenLogoImagenLogo extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiSobrePaginaSobrePagina extends Struct.CollectionTypeSchema {
+  collectionName: 'sobre_paginas';
+  info: {
+    displayName: 'sobre-pagina';
+    pluralName: 'sobre-paginas';
+    singularName: 'sobre-pagina';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    bulletPoints: Schema.Attribute.Component<
+      'componentes-pagina.pag-bullet-points',
+      true
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam metus, rutrum et magna vitae, mollis vulputate ex. Sed sed eros eget justo dictum rutrum vitae eget augue. Integer et dui mollis, vehicula lacus id, vehicula turpis. Nam et rutrum quam, vel sodales justo. Vivamus sit amet dui non purus dictum ornare vel venenatis metus. Sed dapibus ornare justo. Ut laoreet, ipsum in bibendum dignissim, arcu tortor volutpat purus, id luctus ligula massa et nisl. Sed magna nulla, sollicitudin et rutrum sed, sagittis blandit ipsum. Curabitur vitae odio nibh. Mauris placerat, diam eget venenatis accumsan, metus odio viverra quam, quis pharetra libero enim a orci. Vestibulum pharetra consectetur libero, at convallis mauris vestibulum feugiat. Phasellus viverra mi nec enim congue elementum.'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::sobre-pagina.sobre-pagina'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'titulo de seccion'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTituloPaginaTituloPagina extends Struct.SingleTypeSchema {
   collectionName: 'titulo_paginas';
   info: {
@@ -937,6 +974,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::imagen-logo.imagen-logo': ApiImagenLogoImagenLogo;
+      'api::sobre-pagina.sobre-pagina': ApiSobrePaginaSobrePagina;
       'api::titulo-pagina.titulo-pagina': ApiTituloPaginaTituloPagina;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

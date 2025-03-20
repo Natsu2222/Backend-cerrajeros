@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "sobre_paginas",
+  "info": {
+    "singularName": "sobre-pagina",
+    "pluralName": "sobre-paginas",
+    "displayName": "sobre-pagina"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true,
+      "default": "titulo de seccion"
+    },
+    "descripcion": {
+      "type": "text",
+      "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam metus, rutrum et magna vitae, mollis vulputate ex. Sed sed eros eget justo dictum rutrum vitae eget augue. Integer et dui mollis, vehicula lacus id, vehicula turpis. Nam et rutrum quam, vel sodales justo. Vivamus sit amet dui non purus dictum ornare vel venenatis metus. Sed dapibus ornare justo. Ut laoreet, ipsum in bibendum dignissim, arcu tortor volutpat purus, id luctus ligula massa et nisl. Sed magna nulla, sollicitudin et rutrum sed, sagittis blandit ipsum. Curabitur vitae odio nibh. Mauris placerat, diam eget venenatis accumsan, metus odio viverra quam, quis pharetra libero enim a orci. Vestibulum pharetra consectetur libero, at convallis mauris vestibulum feugiat. Phasellus viverra mi nec enim congue elementum.",
+      "required": true
+    },
+    "bulletPoints": {
+      "displayName": "pag-bullet-points",
+      "type": "component",
+      "repeatable": true,
+      "component": "componentes-pagina.pag-bullet-points"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_componentes_pagina_pag_bullet_points",
+  "info": {
+    "displayName": "pag-bullet-points",
+    "icon": "archive"
+  },
+  "options": {},
+  "attributes": {
+    "tituloBP": {
+      "type": "string",
+      "required": true
+    },
+    "descripcionBP": {
+      "type": "text",
+      "required": true
+    },
+    "iconoBP": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
