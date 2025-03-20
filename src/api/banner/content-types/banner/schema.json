@@ -1,0 +1,23 @@
+{
+  "kind": "singleType",
+  "collectionName": "banners",
+  "info": {
+    "singularName": "banner",
+    "pluralName": "banners",
+    "displayName": "banner",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "banner": {
+      "type": "string",
+      "required": true
+    },
+    "urgente": {
+      "type": "uid",
+      "targetField": "banner"
+    }
+  }
+}
