@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_comentarios_star_images",
+  "info": {
+    "displayName": "starImages",
+    "icon": "star"
+  },
+  "options": {},
+  "attributes": {
+    "starFull": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "starEmpt": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}

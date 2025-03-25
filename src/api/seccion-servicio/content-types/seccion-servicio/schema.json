@@ -1,0 +1,36 @@
+{
+  "kind": "singleType",
+  "collectionName": "seccion_servicios",
+  "info": {
+    "singularName": "seccion-servicio",
+    "pluralName": "seccion-servicios",
+    "displayName": "seccion-servicio",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "icono": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
+    "tarjeta_servicios": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tarjeta-servicio.tarjeta-servicio"
+    }
+  }
+}

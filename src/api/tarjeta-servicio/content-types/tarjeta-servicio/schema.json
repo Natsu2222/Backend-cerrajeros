@@ -1,0 +1,47 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tarjeta_servicios",
+  "info": {
+    "singularName": "tarjeta-servicio",
+    "pluralName": "tarjeta-servicios",
+    "displayName": "tarjeta-servicio",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo",
+      "required": true
+    },
+    "icono": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "descripcion": {
+      "type": "text",
+      "required": true
+    },
+    "tarifaServicio": {
+      "displayName": "tarifas",
+      "type": "component",
+      "repeatable": true,
+      "component": "informativo.tarifas"
+    },
+    "shortDescripcion": {
+      "type": "string",
+      "required": true,
+      "default": "primera linea de descripcion"
+    }
+  }
+}

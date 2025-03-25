@@ -399,6 +399,43 @@ export interface ApiBannerBanner extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCommentComment extends Struct.CollectionTypeSchema {
+  collectionName: 'comments';
+  info: {
+    description: '';
+    displayName: 'comment';
+    pluralName: 'comments';
+    singularName: 'comment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    comentario: Schema.Attribute.Text;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fecha: Schema.Attribute.Date;
+    foto: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::comment.comment'
+    > &
+      Schema.Attribute.Private;
+    nombre: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    puntos: Schema.Attribute.Enumeration<
+      ['estrella 1', 'estrellas 2', 'estrellas 3', 'estrellas 4', 'estrellas 5']
+    >;
+    starEmpt: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    starFull: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHeroHero extends Struct.SingleTypeSchema {
   collectionName: 'heroes';
   info: {
@@ -488,6 +525,42 @@ export interface ApiLegitLegit extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiSeccionServicioSeccionServicio
+  extends Struct.SingleTypeSchema {
+  collectionName: 'seccion_servicios';
+  info: {
+    description: '';
+    displayName: 'seccion-servicio';
+    pluralName: 'seccion-servicios';
+    singularName: 'seccion-servicio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    icono: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::seccion-servicio.seccion-servicio'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    tarjeta_servicios: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tarjeta-servicio.tarjeta-servicio'
+    >;
+    titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSobrePaginaSobrePagina extends Struct.CollectionTypeSchema {
   collectionName: 'sobre_paginas';
   info: {
@@ -519,6 +592,43 @@ export interface ApiSobrePaginaSobrePagina extends Struct.CollectionTypeSchema {
     titulo: Schema.Attribute.String &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<'titulo de seccion'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTarjetaServicioTarjetaServicio
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'tarjeta_servicios';
+  info: {
+    description: '';
+    displayName: 'tarjeta-servicio';
+    pluralName: 'tarjeta-servicios';
+    singularName: 'tarjeta-servicio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    icono: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tarjeta-servicio.tarjeta-servicio'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    shortDescripcion: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'primera linea de descripcion'>;
+    slug: Schema.Attribute.UID<'titulo'> & Schema.Attribute.Required;
+    tarifaServicio: Schema.Attribute.Component<'informativo.tarifas', true>;
+    titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1063,10 +1173,13 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::banner.banner': ApiBannerBanner;
+      'api::comment.comment': ApiCommentComment;
       'api::hero.hero': ApiHeroHero;
       'api::imagen-logo.imagen-logo': ApiImagenLogoImagenLogo;
       'api::legit.legit': ApiLegitLegit;
+      'api::seccion-servicio.seccion-servicio': ApiSeccionServicioSeccionServicio;
       'api::sobre-pagina.sobre-pagina': ApiSobrePaginaSobrePagina;
+      'api::tarjeta-servicio.tarjeta-servicio': ApiTarjetaServicioTarjetaServicio;
       'api::titulo-pagina.titulo-pagina': ApiTituloPaginaTituloPagina;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
