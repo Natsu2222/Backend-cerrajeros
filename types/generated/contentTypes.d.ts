@@ -399,16 +399,6 @@ export interface ApiBannerBanner extends Struct.SingleTypeSchema {
   };
 }
 
-
-export interface ApiCtaCta extends Struct.SingleTypeSchema {
-  collectionName: 'ctas';
-  info: {
-    description: '';
-    displayName: 'CTA';
-    pluralName: 'ctas';
-    singularName: 'cta';
-  };
-}
 export interface ApiCommentComment extends Struct.CollectionTypeSchema {
   collectionName: 'comments';
   info: {
@@ -416,28 +406,11 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
     displayName: 'comment';
     pluralName: 'comments';
     singularName: 'comment';
-
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    contacta: Schema.Attribute.String;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    description: Schema.Attribute.Blocks;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cta.cta'> &
-      Schema.Attribute.Private;
-    numero: Schema.Attribute.Integer;
-    publishedAt: Schema.Attribute.DateTime;
-    telefono: Schema.Attribute.Media<'images'>;
-    title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    whatsapp: Schema.Attribute.Media<'images'>;
     comentario: Schema.Attribute.Text;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -460,6 +433,37 @@ export interface ApiCommentComment extends Struct.CollectionTypeSchema {
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+  };
+}
+
+export interface ApiCtaCta extends Struct.SingleTypeSchema {
+  collectionName: 'ctas';
+  info: {
+    description: '';
+    displayName: 'CTA';
+    pluralName: 'ctas';
+    singularName: 'cta';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contacta: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cta.cta'> &
+      Schema.Attribute.Private;
+    numero: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whatsapp: Schema.Attribute.Media<'images'>;
   };
 }
 
@@ -1242,13 +1246,12 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::banner.banner': ApiBannerBanner;
+      'api::comment.comment': ApiCommentComment;
       'api::cta.cta': ApiCtaCta;
       'api::hero.hero': ApiHeroHero;
       'api::imagen-logo.imagen-logo': ApiImagenLogoImagenLogo;
       'api::pagina-contacto.pagina-contacto': ApiPaginaContactoPaginaContacto;
       'api::pagina-legal.pagina-legal': ApiPaginaLegalPaginaLegal;
-      'api::comment.comment': ApiCommentComment;
-      'api::legit.legit': ApiLegitLegit;
       'api::seccion-servicio.seccion-servicio': ApiSeccionServicioSeccionServicio;
       'api::sobre-pagina.sobre-pagina': ApiSobrePaginaSobrePagina;
       'api::tarjeta-servicio.tarjeta-servicio': ApiTarjetaServicioTarjetaServicio;

@@ -53,19 +53,6 @@ export interface InformativoDatosDeContacto extends Struct.ComponentSchema {
   };
 }
 
-export interface LegalLegal1 extends Struct.ComponentSchema {
-  collectionName: 'components_legal_legal1s';
-  info: {
-    displayName: 'Legal1';
-    icon: 'question';
-  };
-  attributes: {
-    description: Schema.Attribute.Text;
-    numero: Schema.Attribute.Integer;
-    titulo: Schema.Attribute.String;
-    tituloDescription: Schema.Attribute.String;
-  };
-}
 export interface InformativoTarifas extends Struct.ComponentSchema {
   collectionName: 'components_informativo_tarifas';
   info: {
@@ -80,6 +67,20 @@ export interface InformativoTarifas extends Struct.ComponentSchema {
   };
 }
 
+export interface LegalLegal1 extends Struct.ComponentSchema {
+  collectionName: 'components_legal_legal1s';
+  info: {
+    displayName: 'Legal1';
+    icon: 'question';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    numero: Schema.Attribute.Integer;
+    titulo: Schema.Attribute.String;
+    tituloDescription: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
@@ -87,8 +88,8 @@ declare module '@strapi/strapi' {
       'componentes-pagina.pag-bullet-points': ComponentesPaginaPagBulletPoints;
       'informativo.componente-informativo': InformativoComponenteInformativo;
       'informativo.datos-de-contacto': InformativoDatosDeContacto;
-      'legal.legal1': LegalLegal1;
       'informativo.tarifas': InformativoTarifas;
+      'legal.legal1': LegalLegal1;
     }
   }
 }
