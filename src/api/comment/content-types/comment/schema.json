@@ -1,0 +1,59 @@
+{
+  "kind": "collectionType",
+  "collectionName": "comments",
+  "info": {
+    "singularName": "comment",
+    "pluralName": "comments",
+    "displayName": "comment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "foto": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "nombre": {
+      "type": "string",
+      "required": true
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "comentario": {
+      "type": "text"
+    },
+    "puntos": {
+      "type": "enumeration",
+      "enum": [
+        "estrella 1",
+        "estrellas 2",
+        "estrellas 3",
+        "estrellas 4",
+        "estrellas 5"
+      ]
+    },
+    "starFull": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "starEmpt": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    }
+  }
+}
