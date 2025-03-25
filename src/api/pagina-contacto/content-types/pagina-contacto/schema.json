@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "pagina_contactos",
+  "info": {
+    "singularName": "pagina-contacto",
+    "pluralName": "pagina-contactos",
+    "displayName": "pagina-contacto",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "Boton": {
+      "type": "string",
+      "required": true,
+      "default": "submit"
+    },
+    "contacto": {
+      "displayName": "DatosDeContacto",
+      "type": "component",
+      "repeatable": true,
+      "component": "informativo.datos-de-contacto"
+    }
+  }
+}

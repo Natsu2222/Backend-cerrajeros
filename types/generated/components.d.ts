@@ -28,11 +28,40 @@ export interface InformativoComponenteInformativo
   };
 }
 
+export interface InformativoDatosDeContacto extends Struct.ComponentSchema {
+  collectionName: 'components_informativo_datos_de_contactos';
+  info: {
+    description: '';
+    displayName: 'DatosDeContacto';
+    icon: 'envelop';
+  };
+  attributes: {
+    NombreDato: Schema.Attribute.String;
+    valorDato: Schema.Attribute.String;
+  };
+}
+
+export interface LegalLegal1 extends Struct.ComponentSchema {
+  collectionName: 'components_legal_legal1s';
+  info: {
+    displayName: 'Legal1';
+    icon: 'question';
+  };
+  attributes: {
+    description: Schema.Attribute.Text;
+    numero: Schema.Attribute.Integer;
+    titulo: Schema.Attribute.String;
+    tituloDescription: Schema.Attribute.String;
+  };
+}
+
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
       'componentes-pagina.pag-bullet-points': ComponentesPaginaPagBulletPoints;
       'informativo.componente-informativo': InformativoComponenteInformativo;
+      'informativo.datos-de-contacto': InformativoDatosDeContacto;
+      'legal.legal1': LegalLegal1;
     }
   }
 }

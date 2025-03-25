@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_legal_legal1s",
+  "info": {
+    "displayName": "Legal1",
+    "icon": "question"
+  },
+  "options": {},
+  "attributes": {
+    "titulo": {
+      "type": "string"
+    },
+    "numero": {
+      "type": "integer"
+    },
+    "tituloDescription": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    }
+  }
+}

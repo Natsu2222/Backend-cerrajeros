@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_informativo_datos_de_contactos",
+  "info": {
+    "displayName": "DatosDeContacto",
+    "icon": "envelop",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "NombreDato": {
+      "type": "string"
+    },
+    "valorDato": {
+      "type": "string"
+    }
+  }
+}

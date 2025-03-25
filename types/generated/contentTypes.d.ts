@@ -399,6 +399,37 @@ export interface ApiBannerBanner extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiCtaCta extends Struct.SingleTypeSchema {
+  collectionName: 'ctas';
+  info: {
+    description: '';
+    displayName: 'CTA';
+    pluralName: 'ctas';
+    singularName: 'cta';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contacta: Schema.Attribute.String;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Blocks;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::cta.cta'> &
+      Schema.Attribute.Private;
+    numero: Schema.Attribute.Integer;
+    publishedAt: Schema.Attribute.DateTime;
+    telefono: Schema.Attribute.Media<'images'>;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    whatsapp: Schema.Attribute.Media<'images'>;
+  };
+}
+
 export interface ApiHeroHero extends Struct.SingleTypeSchema {
   collectionName: 'heroes';
   info: {
@@ -463,12 +494,47 @@ export interface ApiImagenLogoImagenLogo extends Struct.SingleTypeSchema {
   };
 }
 
-export interface ApiLegitLegit extends Struct.CollectionTypeSchema {
-  collectionName: 'legits';
+export interface ApiPaginaContactoPaginaContacto
+  extends Struct.SingleTypeSchema {
+  collectionName: 'pagina_contactos';
   info: {
-    displayName: 'legit';
-    pluralName: 'legits';
-    singularName: 'legit';
+    description: '';
+    displayName: 'pagina-contacto';
+    pluralName: 'pagina-contactos';
+    singularName: 'pagina-contacto';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Boton: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'submit'>;
+    contacto: Schema.Attribute.Component<'informativo.datos-de-contacto', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pagina-contacto.pagina-contacto'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    titulo: Schema.Attribute.String & Schema.Attribute.Required;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPaginaLegalPaginaLegal extends Struct.CollectionTypeSchema {
+  collectionName: 'pagina_legals';
+  info: {
+    description: '';
+    displayName: 'pagina legal';
+    pluralName: 'pagina-legals';
+    singularName: 'pagina-legal';
   };
   options: {
     draftAndPublish: true;
@@ -477,11 +543,18 @@ export interface ApiLegitLegit extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    fecha: Schema.Attribute.Date;
+    FechaActualizacion: Schema.Attribute.String;
+    legal1: Schema.Attribute.Component<'legal.legal1', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::legit.legit'> &
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pagina-legal.pagina-legal'
+    > &
       Schema.Attribute.Private;
-    name: Schema.Attribute.String;
     publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'titulo'>;
+    titulo: Schema.Attribute.String & Schema.Attribute.Required;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1063,9 +1136,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::banner.banner': ApiBannerBanner;
+      'api::cta.cta': ApiCtaCta;
       'api::hero.hero': ApiHeroHero;
       'api::imagen-logo.imagen-logo': ApiImagenLogoImagenLogo;
-      'api::legit.legit': ApiLegitLegit;
+      'api::pagina-contacto.pagina-contacto': ApiPaginaContactoPaginaContacto;
+      'api::pagina-legal.pagina-legal': ApiPaginaLegalPaginaLegal;
       'api::sobre-pagina.sobre-pagina': ApiSobrePaginaSobrePagina;
       'api::titulo-pagina.titulo-pagina': ApiTituloPaginaTituloPagina;
       'plugin::content-releases.release': PluginContentReleasesRelease;

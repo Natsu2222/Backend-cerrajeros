@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pagina_legals",
+  "info": {
+    "singularName": "pagina-legal",
+    "pluralName": "pagina-legals",
+    "displayName": "pagina legal",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "titulo": {
+      "type": "string",
+      "required": true
+    },
+    "FechaActualizacion": {
+      "type": "string"
+    },
+    "fecha": {
+      "type": "date"
+    },
+    "legal1": {
+      "displayName": "Legal1",
+      "type": "component",
+      "repeatable": true,
+      "component": "legal.legal1"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "titulo"
+    }
+  }
+}
