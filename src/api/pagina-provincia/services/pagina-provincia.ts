@@ -1,0 +1,7 @@
+/**
+ * pagina-provincia service
+ */
+
+import { factories } from '@strapi/strapi';
+
+export default factories.createCoreService('api::pagina-provincia.pagina-provincia');
