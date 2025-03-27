@@ -615,6 +615,7 @@ export interface ApiSeccionServicioSeccionServicio
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descripcion: Schema.Attribute.Text & Schema.Attribute.Required;
+    fondo: Schema.Attribute.Media<'images'>;
     icono: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
