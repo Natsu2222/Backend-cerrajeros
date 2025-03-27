@@ -4,7 +4,8 @@
   "info": {
     "singularName": "titulo-pagina",
     "pluralName": "titulo-paginas",
-    "displayName": "titulo-pagina"
+    "displayName": "titulo-pagina",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,7 +13,13 @@
   "attributes": {
     "tituloPagina": {
       "type": "string",
-      "required": true
+      "required": true,
+      "default": "España"
+    },
+    "pagina_provincias": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::pagina-provincia.pagina-provincia"
     }
   }
 }

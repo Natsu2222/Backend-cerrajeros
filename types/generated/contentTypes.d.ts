@@ -598,6 +598,38 @@ export interface ApiPaginaLegalPaginaLegal extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPaginaProvinciaPaginaProvincia
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'pagina_provincias';
+  info: {
+    displayName: 'pagina-provincia';
+    pluralName: 'pagina-provincias';
+    singularName: 'pagina-provincia';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    fotoHero: Schema.Attribute.Media<'images'> & Schema.Attribute.Required;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pagina-provincia.pagina-provincia'
+    > &
+      Schema.Attribute.Private;
+    NumeroProvincia: Schema.Attribute.String & Schema.Attribute.Required;
+    Provincia: Schema.Attribute.String & Schema.Attribute.Required;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.UID<'Provincia'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiSeccionServicioSeccionServicio
   extends Struct.SingleTypeSchema {
   collectionName: 'seccion_servicios';
@@ -712,6 +744,7 @@ export interface ApiTarjetaServicioTarjetaServicio
 export interface ApiTituloPaginaTituloPagina extends Struct.SingleTypeSchema {
   collectionName: 'titulo_paginas';
   info: {
+    description: '';
     displayName: 'titulo-pagina';
     pluralName: 'titulo-paginas';
     singularName: 'titulo-pagina';
@@ -729,8 +762,14 @@ export interface ApiTituloPaginaTituloPagina extends Struct.SingleTypeSchema {
       'api::titulo-pagina.titulo-pagina'
     > &
       Schema.Attribute.Private;
+    pagina_provincias: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pagina-provincia.pagina-provincia'
+    >;
     publishedAt: Schema.Attribute.DateTime;
-    tituloPagina: Schema.Attribute.String & Schema.Attribute.Required;
+    tituloPagina: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'Espa\u00F1a'>;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1253,6 +1292,7 @@ declare module '@strapi/strapi' {
       'api::imagen-logo.imagen-logo': ApiImagenLogoImagenLogo;
       'api::pagina-contacto.pagina-contacto': ApiPaginaContactoPaginaContacto;
       'api::pagina-legal.pagina-legal': ApiPaginaLegalPaginaLegal;
+      'api::pagina-provincia.pagina-provincia': ApiPaginaProvinciaPaginaProvincia;
       'api::seccion-servicio.seccion-servicio': ApiSeccionServicioSeccionServicio;
       'api::sobre-pagina.sobre-pagina': ApiSobrePaginaSobrePagina;
       'api::tarjeta-servicio.tarjeta-servicio': ApiTarjetaServicioTarjetaServicio;
