@@ -630,6 +630,34 @@ export interface ApiPaginaProvinciaPaginaProvincia
   };
 }
 
+export interface ApiPubliPubli extends Struct.CollectionTypeSchema {
+  collectionName: 'publis';
+  info: {
+    displayName: 'publi';
+    pluralName: 'publis';
+    singularName: 'publi';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.Text;
+    image: Schema.Attribute.Media<'images', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::publi.publi'> &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    video: Schema.Attribute.Media<'videos'>;
+  };
+}
+
 export interface ApiSeccionServicioSeccionServicio
   extends Struct.SingleTypeSchema {
   collectionName: 'seccion_servicios';
@@ -1293,6 +1321,7 @@ declare module '@strapi/strapi' {
       'api::pagina-contacto.pagina-contacto': ApiPaginaContactoPaginaContacto;
       'api::pagina-legal.pagina-legal': ApiPaginaLegalPaginaLegal;
       'api::pagina-provincia.pagina-provincia': ApiPaginaProvinciaPaginaProvincia;
+      'api::publi.publi': ApiPubliPubli;
       'api::seccion-servicio.seccion-servicio': ApiSeccionServicioSeccionServicio;
       'api::sobre-pagina.sobre-pagina': ApiSobrePaginaSobrePagina;
       'api::tarjeta-servicio.tarjeta-servicio': ApiTarjetaServicioTarjetaServicio;
